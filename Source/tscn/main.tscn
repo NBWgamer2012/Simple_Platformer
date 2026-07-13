@@ -1,0 +1,293 @@
+[gd_scene format=4 uid="uid://crixlpdsqwww6"]
+
+[ext_resource type="PackedScene" uid="uid://bo8lx78om4iv1" path="res://tscn/Player.tscn" id="1_ewaw7"]
+[ext_resource type="Script" uid="uid://eueepyxf3kb5" path="res://Script/Camera_Script.gd" id="2_8wxc5"]
+[ext_resource type="Script" uid="uid://crwoqe6f1yybo" path="res://Script/public_vars.gd" id="2_qtm2r"]
+[ext_resource type="Script" uid="uid://bf7lkw45wuiga" path="res://Script/is_mobile.gd" id="3_ao1ln"]
+[ext_resource type="Script" uid="uid://die2r0n3s06dj" path="res://Script/debug_text_visibility.gd" id="3_bnc66"]
+[ext_resource type="Texture2D" uid="uid://bsnybwpi5v8s3" path="res://assets/graphics/Floor_Bars.png" id="4_a7rub"]
+[ext_resource type="Texture2D" uid="uid://cwmcw47dt2128" path="res://assets/graphics/Jump_button.png" id="4_d2uin"]
+[ext_resource type="FontFile" uid="uid://v3yxeuc4f0f2" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="4_uf0e4"]
+[ext_resource type="PackedScene" uid="uid://bx6m0k66jrf5s" path="res://tscn/Checkpoint.tscn" id="5_g6ans"]
+[ext_resource type="PackedScene" uid="uid://b2umnkpe4g0lh" path="res://tscn/pits.tscn" id="6_8d387"]
+[ext_resource type="PackedScene" uid="uid://dj0koa2r808ni" path="res://tscn/bar.tscn" id="7_d2uin"]
+[ext_resource type="Texture2D" uid="uid://b8bgf187ytfpp" path="res://assets/graphics/Item.png" id="7_hegun"]
+[ext_resource type="Texture2D" uid="uid://cpj1isjy6ylxo" path="res://assets/graphics/Jump_collectiable.png" id="8_tfptk"]
+[ext_resource type="PackedScene" uid="uid://dlbbq1wt7hqr8" path="res://tscn/worker.tscn" id="9_8d387"]
+[ext_resource type="Script" uid="uid://wlsld5dv8ua3" path="res://Script/collectiables.gd" id="10_mn4ff"]
+[ext_resource type="PackedScene" uid="uid://bvdb1ydl1q7qm" path="res://tscn/INVISWALL.tscn" id="12_k3nvp"]
+[ext_resource type="PackedScene" uid="uid://clfc6xxd7eh53" path="res://tscn/DOUBLEJUMP.tscn" id="15_mn6q8"]
+[ext_resource type="PackedScene" uid="uid://1pr5w0ru2t5v" path="res://tscn/Items.tscn" id="16_mn6q8"]
+[ext_resource type="Script" uid="uid://dotutox47po1b" path="res://tscn/DoubleJump_Tutorial.gd" id="19_b7fts"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bnc66"]
+font = ExtResource("4_uf0e4")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6ans"]
+texture = ExtResource("4_a7rub")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mn4ff"]
+scenes/1/scene = ExtResource("6_8d387")
+scenes/2/scene = ExtResource("12_k3nvp")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_k3nvp"]
+scenes/1/scene = ExtResource("5_g6ans")
+scenes/2/scene = ExtResource("15_mn6q8")
+scenes/3/scene = ExtResource("16_mn6q8")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bnc66"]
+scenes/1/scene = ExtResource("7_d2uin")
+scenes/2/scene = ExtResource("9_8d387")
+
+[sub_resource type="TileSet" id="TileSet_ppeyn"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_g6ans")
+sources/1 = SubResource("TileSetScenesCollectionSource_mn4ff")
+sources/5 = SubResource("TileSetScenesCollectionSource_bnc66")
+sources/2 = SubResource("TileSetScenesCollectionSource_k3nvp")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppeyn"]
+size = Vector2(1589, 142)
+
+[node name="Main" type="Node2D" unique_id=1110719182]
+
+[node name="Player" parent="." unique_id=458597580 instance=ExtResource("1_ewaw7")]
+z_index = 30
+position = Vector2(6250, -100)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1556837706]
+position = Vector2(3997, -87)
+zoom = Vector2(2, 2)
+script = ExtResource("2_8wxc5")
+
+[node name="Debug_TEXT" type="Label" parent="Camera2D" unique_id=918671451]
+z_index = 21
+offset_left = -160.0
+offset_top = 55.0
+offset_right = -105.0
+offset_bottom = 78.0
+text = "DEBUG"
+script = ExtResource("3_bnc66")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=690282466]
+z_index = -200
+offset_left = -164.0
+offset_top = -83.0
+offset_right = -124.0
+offset_bottom = -43.0
+scale = Vector2(8.33, 4.3562546)
+color = Color(0.646029, 0.646029, 0.646029, 1)
+
+[node name="DoubleJump" type="Label" parent="Camera2D" unique_id=429589739]
+offset_left = -139.0
+offset_top = -80.0
+offset_right = 181.0
+offset_bottom = -57.0
+text = "Cur_DOUBLEJUMP_ITEMS"
+label_settings = SubResource("LabelSettings_bnc66")
+
+[node name="Items_COLLECTED" type="Label" parent="Camera2D" unique_id=378085327]
+offset_left = -138.0
+offset_top = -56.0
+offset_right = 182.0
+offset_bottom = -33.0
+text = "Cur_DOUBLEJUMP_ITEMS"
+label_settings = SubResource("LabelSettings_bnc66")
+
+[node name="Mobile controlls" type="Node2D" parent="Camera2D" unique_id=1132034307]
+position = Vector2(0, -10000)
+script = ExtResource("3_ao1ln")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Camera2D/Mobile controlls" unique_id=1665538799]
+position = Vector2(113, 10021)
+texture_normal = ExtResource("4_d2uin")
+texture_pressed = ExtResource("4_d2uin")
+action = "w"
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="Camera2D/Mobile controlls" unique_id=989155667]
+z_index = 4096
+offset_left = -148.0
+offset_top = 10020.0
+offset_right = -108.0
+offset_bottom = 10060.0
+joystick_mode = 1
+joystick_size = 50.0
+action_left = &"a"
+action_right = &"d"
+action_up = &""
+action_down = &""
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D" unique_id=403719552]
+position = Vector2(-151, -47)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_hegun")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D" unique_id=1106478037]
+position = Vector2(-152, -71)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_tfptk")
+
+[node name="Public_VARS" type="Node" parent="." unique_id=358827347]
+script = ExtResource("2_qtm2r")
+
+[node name="Collider_Tiles" type="TileMapLayer" parent="." unique_id=1636097097]
+tile_map_data = PackedByteArray("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")
+tile_set = SubResource("TileSet_ppeyn")
+
+[node name="Checkpoints" type="Node" parent="." unique_id=78047732]
+
+[node name="0" parent="Checkpoints" unique_id=1978738690 instance=ExtResource("5_g6ans")]
+position = Vector2(281, -16)
+
+[node name="1" parent="Checkpoints" unique_id=601102604 instance=ExtResource("5_g6ans")]
+position = Vector2(532, -16)
+
+[node name="2" parent="Checkpoints" unique_id=1629831969 instance=ExtResource("5_g6ans")]
+position = Vector2(1203, -16)
+
+[node name="Enemys" type="Node2D" parent="." unique_id=1808467388]
+
+[node name="Worker" parent="Enemys" unique_id=1501808222 instance=ExtResource("9_8d387")]
+position = Vector2(128, -16)
+
+[node name="Worker2" parent="Enemys" unique_id=948111777 instance=ExtResource("9_8d387")]
+position = Vector2(320, -16)
+
+[node name="Worker3" parent="Enemys" unique_id=878201749 instance=ExtResource("9_8d387")]
+position = Vector2(736, -72)
+
+[node name="Worker4" parent="Enemys" unique_id=323325572 instance=ExtResource("9_8d387")]
+position = Vector2(1103, -72)
+
+[node name="Worker5" parent="Enemys" unique_id=821895529 instance=ExtResource("9_8d387")]
+position = Vector2(2483, -49)
+
+[node name="Worker6" parent="Enemys" unique_id=1029095205 instance=ExtResource("9_8d387")]
+position = Vector2(2785, -49)
+
+[node name="Collectiables" type="Node" parent="." unique_id=1654201411]
+script = ExtResource("10_mn4ff")
+
+[node name="0" parent="Collectiables" unique_id=1145712752 instance=ExtResource("15_mn6q8")]
+position = Vector2(-155, -56)
+
+[node name="1" parent="Collectiables" unique_id=838700050 instance=ExtResource("15_mn6q8")]
+position = Vector2(1686, -85)
+
+[node name="2" parent="Collectiables" unique_id=170686851 instance=ExtResource("15_mn6q8")]
+position = Vector2(82, -44)
+
+[node name="Area2D" parent="." unique_id=218774767 instance=ExtResource("6_8d387")]
+position = Vector2(-276, 44)
+
+[node name="Bar" parent="." unique_id=1954380830 instance=ExtResource("7_d2uin")]
+position = Vector2(-275, 81)
+
+[node name="Items" type="Node" parent="." unique_id=756747719]
+
+[node name="0" parent="Items" unique_id=720758182 instance=ExtResource("16_mn6q8")]
+position = Vector2(291, -68)
+
+[node name="1" parent="Items" unique_id=1431814358 instance=ExtResource("16_mn6q8")]
+position = Vector2(540, -68)
+
+[node name="2" parent="Items" unique_id=2027199245 instance=ExtResource("16_mn6q8")]
+position = Vector2(940, -36)
+
+[node name="3" parent="Items" unique_id=634049383 instance=ExtResource("16_mn6q8")]
+position = Vector2(1245, -11)
+
+[node name="INVISWALL" parent="." unique_id=1456018036 instance=ExtResource("12_k3nvp")]
+position = Vector2(-351.41107, 40.24022)
+
+[node name="LVL_DEBUG_MARKERS" type="Node" parent="." unique_id=858321716]
+
+[node name="Label" type="Label" parent="LVL_DEBUG_MARKERS" unique_id=1606449880]
+offset_left = -135.0
+offset_top = -220.0
+offset_right = -37.0
+offset_bottom = -197.0
+text = "test stage"
+
+[node name="Label2" type="Label" parent="LVL_DEBUG_MARKERS" unique_id=1289138629]
+offset_left = 4743.0
+offset_top = -281.0
+offset_right = 4841.0
+offset_bottom = -258.0
+text = "TUTORIAL"
+
+[node name="Label3" type="Label" parent="LVL_DEBUG_MARKERS" unique_id=945165071]
+offset_left = 4690.0
+offset_top = -102.0
+offset_right = 4878.0
+offset_bottom = -79.0
+text = "Welcome to the tutorial!"
+
+[node name="LVL_Tutorial_Assets" type="Node" parent="." unique_id=507380116]
+
+[node name="Label" type="Label" parent="LVL_Tutorial_Assets" unique_id=2078549417]
+offset_left = 4690.0
+offset_top = -102.0
+offset_right = 4878.0
+offset_bottom = -79.0
+text = "Welcome to the tutorial!"
+
+[node name="Label2" type="Label" parent="LVL_Tutorial_Assets" unique_id=1477700497]
+offset_left = 4966.0
+offset_top = -102.0
+offset_right = 5186.0
+offset_bottom = -79.0
+text = "You can press space or \"W\" to jump"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="LVL_Tutorial_Assets" unique_id=472082409]
+offset_left = 5244.0
+offset_top = -102.0
+offset_right = 5464.0
+offset_bottom = -79.0
+text = "You can jump through these"
+
+[node name="Label4" type="Label" parent="LVL_Tutorial_Assets" unique_id=465759103]
+offset_left = 5612.0
+offset_top = -112.0
+offset_right = 5832.0
+offset_bottom = -37.0
+text = "Look in the top right, the top counter is how many doublejumps you have"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label5" type="Label" parent="LVL_Tutorial_Assets" unique_id=1390598147]
+offset_left = 5905.0
+offset_top = -112.0
+offset_right = 6129.0
+offset_bottom = -37.0
+text = "Collect this doublejump and jump over the wall up ahead"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label6" type="Label" parent="LVL_Tutorial_Assets" unique_id=2115664875]
+offset_left = 6358.0
+offset_top = -120.0
+offset_right = 6582.0
+offset_bottom = -45.0
+text = "Don't touch him
+he is trying to get you"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Area2D" type="Area2D" parent="LVL_Tutorial_Assets" unique_id=1883064263]
+position = Vector2(6237, -55)
+script = ExtResource("19_b7fts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LVL_Tutorial_Assets/Area2D" unique_id=858135433]
+position = Vector2(-784.5, -15)
+shape = SubResource("RectangleShape2D_ppeyn")
+
+[connection signal="body_entered" from="LVL_Tutorial_Assets/Area2D" to="LVL_Tutorial_Assets/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="LVL_Tutorial_Assets/Area2D" to="LVL_Tutorial_Assets/Area2D" method="_on_body_exited"]

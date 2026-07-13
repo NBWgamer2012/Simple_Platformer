@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dlbbq1wt7hqr8"]
+
+[ext_resource type="Script" uid="uid://cry51y4ejnojw" path="res://Script/worker.gd" id="1_ld38o"]
+[ext_resource type="Texture2D" uid="uid://c4vt0a6kvk4ww" path="res://assets/graphics/Gaurd_DEV.png" id="2_gfmva"]
+[ext_resource type="Script" uid="uid://coxvh3unytl7f" path="res://Script/hitboxworkerscript.gd" id="3_o7ncf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap273"]
+atlas = ExtResource("2_gfmva")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppeyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gfmva")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap273")
+}],
+"loop": 1,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8d387"]
+size = Vector2(6, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnoe2"]
+size = Vector2(11, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw4yl"]
+size = Vector2(16, 20)
+
+[node name="Worker" type="CharacterBody2D" unique_id=1501808222]
+script = ExtResource("1_ld38o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1301812174]
+sprite_frames = SubResource("SpriteFrames_ppeyn")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1030559099]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_8d387")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1471517942]
+position = Vector2(8, 0)
+script = ExtResource("3_o7ncf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1979095429]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_hnoe2")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=185751865]
+position = Vector2(8, 20)
+script = ExtResource("3_o7ncf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1986914359]
+shape = SubResource("RectangleShape2D_aw4yl")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1086314252]
+
+[connection signal="body_entered" from="Area2D" to="." method="_PLAYER"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]

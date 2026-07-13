@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d1lebgw6l46lq"]
+
+[node name="Intro" type="Node2D" unique_id=250086794]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1833135729]
+
+[node name="Label" type="Label" parent="." unique_id=1539866278]
+offset_left = -108.0
+offset_top = -14.0
+offset_right = 117.0
+offset_bottom = 9.0
+text = "A newabnoob game thing idk"
+horizontal_alignment = 1
+vertical_alignment = 1

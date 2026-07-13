@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://clfc6xxd7eh53"]
+
+[ext_resource type="Script" uid="uid://wsjyxwc6nec6" path="res://Script/doublejump_collectiable.gd" id="1_qxtes"]
+[ext_resource type="Texture2D" uid="uid://cpj1isjy6ylxo" path="res://assets/graphics/Jump_collectiable.png" id="2_t4v5i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppeyn"]
+size = Vector2(11, 17)
+
+[node name="0" type="Node2D" unique_id=1145712752]
+script = ExtResource("1_qxtes")
+
+[node name="Texture" type="Sprite2D" parent="." unique_id=744903189]
+position = Vector2(9, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_t4v5i")
+
+[node name="Collider" type="Area2D" parent="." unique_id=1194848236]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider" unique_id=324470418]
+position = Vector2(9, 10)
+shape = SubResource("RectangleShape2D_ppeyn")
+
+[connection signal="body_entered" from="Collider" to="." method="_on_collider_body_entered"]

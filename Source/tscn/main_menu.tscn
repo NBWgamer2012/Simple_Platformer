@@ -1,0 +1,179 @@
+[gd_scene format=3 uid="uid://dnuys1nbw0hff"]
+
+[ext_resource type="Script" uid="uid://cfvsptnfrs81p" path="res://tscn/camera_2d_mainmenu.gd" id="1_ukx4d"]
+[ext_resource type="Texture2D" uid="uid://druj05f1428it" path="res://assets/graphics/player.png" id="1_ymtcx"]
+[ext_resource type="Script" uid="uid://vueoif74qa3" path="res://tscn/button_mainmenu.gd" id="2_ukx4d"]
+[ext_resource type="Script" uid="uid://bf8jpjff3vjiy" path="res://tscn/LVLSELECT_BUTTON.gd" id="4_cpdt8"]
+
+[node name="Main_Menu" type="Node2D" unique_id=681945148]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=54342076]
+position = Vector2(-666, 0)
+script = ExtResource("1_ukx4d")
+
+[node name="1" type="Node2D" parent="." unique_id=1478335436]
+
+[node name="Sprite2D" type="Sprite2D" parent="1" unique_id=1390966882]
+position = Vector2(-169, 38.000004)
+scale = Vector2(13, 13)
+texture = ExtResource("1_ymtcx")
+region_enabled = true
+region_rect = Rect2(4.993286, 6.5878716, 23.545143, 19.620956)
+
+[node name="ColorRect" type="ColorRect" parent="1" unique_id=2104169092]
+z_index = -7
+offset_left = -337.0
+offset_top = -170.0
+offset_right = -297.0
+offset_bottom = -130.0
+scale = Vector2(16.84, 8.879999)
+color = Color(0, 0.1882353, 1, 1)
+
+[node name="Label" type="Label" parent="1" unique_id=1474626325]
+offset_left = -66.99999
+offset_top = -144.99998
+offset_right = 74.00001
+offset_bottom = -121.999985
+scale = Vector2(1, 0.95455873)
+text = "Simple Platformer"
+
+[node name="2" type="Node2D" parent="." unique_id=217130671]
+position = Vector2(667, 0)
+
+[node name="ColorRect" type="ColorRect" parent="2" unique_id=764485960]
+z_index = -7
+offset_left = -337.0
+offset_top = -170.0
+offset_right = -297.0
+offset_bottom = -130.0
+scale = Vector2(16.84, 8.879999)
+color = Color(0, 0.1882353, 1, 1)
+
+[node name="Label" type="Label" parent="2" unique_id=432751051]
+offset_left = -292.00003
+offset_top = -22.0
+offset_right = -151.00003
+offset_bottom = 1.0
+scale = Vector2(1, 0.95455873)
+text = "LVL_SELECT"
+
+[node name="Button" type="Button" parent="." unique_id=1937132063]
+offset_left = 107.0
+offset_top = 4.0
+offset_right = 148.0
+offset_bottom = 35.0
+text = "Play"
+script = ExtResource("2_ukx4d")
+
+[node name="Button3" type="Button" parent="." unique_id=1788498901]
+offset_left = -494.0
+offset_top = 125.0
+offset_right = -352.0
+offset_bottom = 156.0
+text = "Go to main menu"
+
+[node name="Button4" type="Button" parent="." unique_id=469724369]
+offset_left = 67.0
+offset_top = 42.0
+offset_right = 209.0
+offset_bottom = 73.0
+text = "Changes"
+
+[node name="LVL_SELECT" type="Node2D" parent="." unique_id=1760628426]
+position = Vector2(648, -121)
+
+[node name="debugstage" type="Button" parent="LVL_SELECT" unique_id=434005704]
+offset_left = -106.0
+offset_top = -15.0
+offset_right = -68.0
+offset_bottom = 16.0
+script = ExtResource("4_cpdt8")
+
+[node name="tutorial" type="Button" parent="LVL_SELECT" unique_id=524079557]
+offset_left = -105.0
+offset_top = 19.0
+offset_right = -67.0
+offset_bottom = 50.0
+script = ExtResource("4_cpdt8")
+
+[node name="1" type="Button" parent="LVL_SELECT" unique_id=1082784032]
+offset_left = -105.0
+offset_top = 56.0
+offset_right = -67.0
+offset_bottom = 87.0
+script = ExtResource("4_cpdt8")
+
+[node name="113" type="Button" parent="LVL_SELECT" unique_id=1538708580]
+offset_left = -107.0
+offset_top = 95.0
+offset_right = -69.0
+offset_bottom = 126.0
+script = ExtResource("4_cpdt8")
+
+[node name="114" type="Button" parent="LVL_SELECT" unique_id=1006580450]
+offset_left = -106.0
+offset_top = 131.0
+offset_right = -68.0
+offset_bottom = 162.0
+script = ExtResource("4_cpdt8")
+
+[node name="115" type="Button" parent="LVL_SELECT" unique_id=1623850695]
+offset_left = -105.0
+offset_top = 173.0
+offset_right = -67.0
+offset_bottom = 204.0
+script = ExtResource("4_cpdt8")
+
+[node name="116" type="Button" parent="LVL_SELECT" unique_id=1198850422]
+offset_left = -104.0
+offset_top = 218.0
+offset_right = -66.0
+offset_bottom = 249.0
+script = ExtResource("4_cpdt8")
+
+[node name="3" type="Node2D" parent="." unique_id=216244298]
+position = Vector2(-674.00006, 7.450581e-06)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="ColorRect" type="ColorRect" parent="3" unique_id=78410164]
+z_index = -7
+offset_left = -337.0
+offset_top = -170.0
+offset_right = -297.0
+offset_bottom = -130.0
+scale = Vector2(16.84, 8.879999)
+color = Color(0, 0.1882353, 1, 1)
+
+[node name="Label" type="Label" parent="3" unique_id=101252301]
+offset_left = -36.999992
+offset_top = -148.00002
+offset_right = 104.00001
+offset_bottom = -125.000015
+scale = Vector2(1, 0.95455873)
+text = "changes"
+
+[node name="Label2" type="Label" parent="3" unique_id=1749697719]
+offset_left = -110.0
+offset_top = -82.0
+offset_right = 306.0
+offset_bottom = 97.0
+text = "Changed doublejump item font
+
+Made enemys face your direction
+
+Main Menu
+
+Debug hidden but can be shown by pressing up arrow
+
+moved flag out of ground"
+
+[node name="Sprite2D3" type="Sprite2D" parent="3" unique_id=906624940]
+position = Vector2(-220.00002, 10)
+scale = Vector2(9, 9)
+texture = ExtResource("1_ymtcx")
+region_enabled = true
+region_rect = Rect2(71.87216, 6.9257336, 17.495361, 21.910065)
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Button3" to="Button" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="Button" method="_on_button_4_pressed"]

@@ -1,0 +1,60 @@
+[gd_scene format=4 uid="uid://crixlpdsqwww6"]
+
+[ext_resource type="PackedScene" uid="uid://bo8lx78om4iv1" path="res://tscn/Player.tscn" id="1_ewaw7"]
+[ext_resource type="Script" uid="uid://eueepyxf3kb5" path="res://Script/Camera_Script.gd" id="2_8wxc5"]
+[ext_resource type="Script" uid="uid://crwoqe6f1yybo" path="res://Script/public_vars.gd" id="2_qtm2r"]
+[ext_resource type="Texture2D" uid="uid://bsnybwpi5v8s3" path="res://assets/graphics/Floor_Bars.png" id="4_a7rub"]
+[ext_resource type="PackedScene" uid="uid://bx6m0k66jrf5s" path="res://tscn/Checkpoint.tscn" id="5_g6ans"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6ans"]
+texture = ExtResource("4_a7rub")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ppeyn"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_g6ans")
+
+[node name="Main" type="Node2D" unique_id=1110719182]
+
+[node name="Player" parent="." unique_id=458597580 instance=ExtResource("1_ewaw7")]
+z_index = 30
+position = Vector2(-127, -18)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1556837706]
+position = Vector2(0, -66)
+zoom = Vector2(2, 2)
+script = ExtResource("2_8wxc5")
+
+[node name="Debug_TEXT" type="Label" parent="Camera2D" unique_id=918671451]
+z_index = 21
+offset_left = -158.0
+offset_top = -75.0
+offset_right = -118.0
+offset_bottom = -52.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=690282466]
+z_index = -200
+offset_left = -164.0
+offset_top = -83.0
+offset_right = -124.0
+offset_bottom = -43.0
+scale = Vector2(8.33, 4.3562546)
+color = Color(0.646029, 0.646029, 0.646029, 1)
+
+[node name="Public_VARS" type="Node" parent="." unique_id=358827347]
+script = ExtResource("2_qtm2r")
+
+[node name="Collider_Tiles" type="TileMapLayer" parent="." unique_id=1636097097]
+tile_map_data = PackedByteArray("AAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD6////AAAAAAAAAAD6//7/AAAAAAAAAAD6//3/AAAAAAAAAAD6//z/AAAAAAAAAAD6//v/AAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ppeyn")
+
+[node name="Checkpoints" type="Node" parent="." unique_id=78047732]
+
+[node name="0" parent="Checkpoints" unique_id=1978738690 instance=ExtResource("5_g6ans")]
+position = Vector2(281, -16)
