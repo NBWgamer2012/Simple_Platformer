@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bodd873k2i11e"
+path="res://.godot/imported/70. Lava Bubble (Beta).ogg-66a29b5a0e84e9a983d8236d0d87cffb.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/tracks/70. Lava Bubble (Beta).ogg"
+dest_files=["res://.godot/imported/70. Lava Bubble (Beta).ogg-66a29b5a0e84e9a983d8236d0d87cffb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

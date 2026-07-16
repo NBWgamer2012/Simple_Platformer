@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bcwu4i3s71qvu"]
+
+[ext_resource type="Script" uid="uid://b81ueydotbd7l" path="res://AudioInfo.gd" id="2_d02xk"]
+[ext_resource type="Script" uid="uid://cq4yrq71ax3a1" path="res://audio_player.gd" id="2_r6br8"]
+
+[sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_s3ifu"]
+
+[node name="Audio_SYSTEM" type="Node" unique_id=1350617828]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1855758505]
+stream = SubResource("AudioStreamOggVorbis_s3ifu")
+parameters/looping = true
+script = ExtResource("2_r6br8")
+
+[node name="AudioInfo" type="Node" parent="." unique_id=552594166]
+script = ExtResource("2_d02xk")

@@ -11,15 +11,15 @@ var direction :float = 1
 var xspeed :float = 0
 var map_found :bool = false
 func _ready():
-	reset()
-	for i in len(shared.cur_stage_start_positions):
-		if shared.cur_stage == shared.cur_stage_start_positions[i][0]:
-			position = Vector2i(shared.cur_stage_start_positions[i][1], shared.cur_stage_start_positions[i][2])
-			map_found = true
-	if map_found == false:
-		print('failed to find player positioning, resetting...')
-		get_tree().change_scene_to_file("res://tscn/reset.tscn")
-		
+	
+#	for i in len(shared.cur_stage_start_positions):
+#		if shared.cur_stage == shared.cur_stage_start_positions[i][0]:
+#			position = Vector2i(shared.cur_stage_start_positions[i][1], shared.cur_stage_start_positions[i][2])
+#			map_found = true
+#	if map_found == false:
+#		print('failed to find player positioning, resetting...')
+#		get_tree().change_scene_to_file("res://tscn/reset.tscn")
+	position = Vector2i(shared.cur_checkpoint.x, shared.cur_checkpoint.y)
 
 
 
@@ -75,7 +75,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		doublejump = 0
 	double_jump_counter.text = str(shared.doublejump_collected)
-
+	
 
 
 
@@ -92,12 +92,3 @@ func animation_controller(cur_animation, cur_direction):
 	elif cur_direction < 0:
 		sprite.flip_h = true
 	debug_text.text = str(cur_animation, " / ", cur_direction, " / ", doublejump, " / ", xspeed ," / ", Engine.get_frames_per_second())
-
-
-
-
-func reset():
-	if shared.cur_checkpoint != 0:
-		position = checkpoint.get_child(shared.cur_checkpoint - 1).position
-	else:
-		position = Vector2i(-127, -18)

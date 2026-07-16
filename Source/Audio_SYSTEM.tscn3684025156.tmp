@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bcwu4i3s71qvu"]
+
+[ext_resource type="AudioStream" uid="uid://bsji28n37ckjv" path="res://assets/Audio/tracks/Music_TEST.ogg" id="1_xx210"]
+[ext_resource type="Script" uid="uid://cq4yrq71ax3a1" path="res://audio_player.gd" id="2_r6br8"]
+
+[node name="Audio_SYSTEM" type="Node" unique_id=1350617828]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1855758505]
+stream = ExtResource("1_xx210")
+parameters/looping = true
+script = ExtResource("2_r6br8")
