@@ -34,6 +34,7 @@ files=Array[PackedStringArray]([PackedStringArray("res://assets/Audio", "assets/
 window/size/viewport_width=640
 window/size/viewport_height=320
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 

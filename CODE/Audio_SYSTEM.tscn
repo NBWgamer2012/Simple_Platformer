@@ -7,8 +7,12 @@
 
 [node name="Audio_SYSTEM" type="Node" unique_id=1350617828]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1855758505]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1022870423]
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
 stream = SubResource("AudioStreamOggVorbis_s3ifu")
+playback_type = 1
 parameters/looping = true
 script = ExtResource("2_r6br8")
 
