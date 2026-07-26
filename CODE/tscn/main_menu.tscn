@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://druj05f1428it" path="res://assets/graphics/player.png" id="1_ymtcx"]
 [ext_resource type="Script" uid="uid://vueoif74qa3" path="res://tscn/button_mainmenu.gd" id="2_ukx4d"]
 [ext_resource type="Script" uid="uid://bf8jpjff3vjiy" path="res://tscn/LVLSELECT_BUTTON.gd" id="4_cpdt8"]
+[ext_resource type="Script" uid="uid://nekv7y4n3s11" path="res://tscn/lvl_select.gd" id="4_ra1sj"]
 
 [node name="Main_Menu" type="Node2D" unique_id=681945148]
 
@@ -79,58 +80,6 @@ offset_right = -246.0
 offset_bottom = -303.0
 text = "Changes"
 
-[node name="LVL_SELECT" type="Node2D" parent="." unique_id=1760628426]
-position = Vector2(648, -121)
-
-[node name="debugstage" type="Button" parent="LVL_SELECT" unique_id=434005704]
-offset_left = -106.0
-offset_top = -15.0
-offset_right = -68.0
-offset_bottom = 16.0
-script = ExtResource("4_cpdt8")
-
-[node name="tutorial" type="Button" parent="LVL_SELECT" unique_id=524079557]
-offset_left = -105.0
-offset_top = 19.0
-offset_right = -67.0
-offset_bottom = 50.0
-script = ExtResource("4_cpdt8")
-
-[node name="1" type="Button" parent="LVL_SELECT" unique_id=1082784032]
-offset_left = -105.0
-offset_top = 56.0
-offset_right = -67.0
-offset_bottom = 87.0
-script = ExtResource("4_cpdt8")
-
-[node name="113" type="Button" parent="LVL_SELECT" unique_id=1538708580]
-offset_left = -107.0
-offset_top = 95.0
-offset_right = -69.0
-offset_bottom = 126.0
-script = ExtResource("4_cpdt8")
-
-[node name="114" type="Button" parent="LVL_SELECT" unique_id=1006580450]
-offset_left = -106.0
-offset_top = 131.0
-offset_right = -68.0
-offset_bottom = 162.0
-script = ExtResource("4_cpdt8")
-
-[node name="115" type="Button" parent="LVL_SELECT" unique_id=1623850695]
-offset_left = -105.0
-offset_top = 173.0
-offset_right = -67.0
-offset_bottom = 204.0
-script = ExtResource("4_cpdt8")
-
-[node name="116" type="Button" parent="LVL_SELECT" unique_id=1198850422]
-offset_left = -104.0
-offset_top = 218.0
-offset_right = -66.0
-offset_bottom = 249.0
-script = ExtResource("4_cpdt8")
-
 [node name="3" type="Node2D" parent="." unique_id=216244298]
 position = Vector2(-674.00006, 7.450581e-06)
 scale = Vector2(0.99999994, 0.99999994)
@@ -173,6 +122,46 @@ scale = Vector2(9, 9)
 texture = ExtResource("1_ymtcx")
 region_enabled = true
 region_rect = Rect2(71.87216, 6.9257336, 17.495361, 21.910065)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1235140031]
+offset_left = 540.0
+offset_top = -93.0
+offset_right = 888.0
+offset_bottom = 103.0
+horizontal_scroll_mode = 0
+
+[node name="LVL_SELECT" type="VBoxContainer" parent="ScrollContainer" unique_id=770048790]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_ra1sj")
+
+[node name="debugstage" type="Button" parent="ScrollContainer/LVL_SELECT" unique_id=434005704]
+layout_mode = 2
+script = ExtResource("4_cpdt8")
+
+[node name="tutorial" type="Button" parent="ScrollContainer/LVL_SELECT" unique_id=524079557]
+layout_mode = 2
+script = ExtResource("4_cpdt8")
+
+[node name="1" type="Button" parent="ScrollContainer/LVL_SELECT" unique_id=526708713]
+layout_mode = 2
+script = ExtResource("4_cpdt8")
+
+[node name="2" type="Button" parent="ScrollContainer/LVL_SELECT" unique_id=1519169885]
+layout_mode = 2
+script = ExtResource("4_cpdt8")
+
+[node name="3" type="Button" parent="ScrollContainer/LVL_SELECT" unique_id=2146360546]
+layout_mode = 2
+script = ExtResource("4_cpdt8")
+
+[node name="4" type="Button" parent="ScrollContainer/LVL_SELECT" unique_id=551780594]
+layout_mode = 2
+script = ExtResource("4_cpdt8")
+
+[node name="5" type="Button" parent="ScrollContainer/LVL_SELECT" unique_id=1582781244]
+layout_mode = 2
+script = ExtResource("4_cpdt8")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="Button3" to="Button" method="_on_button_3_pressed"]

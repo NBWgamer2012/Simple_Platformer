@@ -20,5 +20,10 @@ func _process(delta):
 		if map_found == false:
 			print('failed to find LVL pointers, resetting...')
 			get_tree().change_scene_to_file("res://tscn/reset.tscn")
+		shared.hasreset = false
+		print("set hasresetvar")
+		shared.doublejump_collected = 0
+
+
 		get_tree().change_scene_to_file("res://tscn/main.tscn")
 	text = name

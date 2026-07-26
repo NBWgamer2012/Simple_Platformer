@@ -7,18 +7,25 @@ func _ready():
 		if str(get_tree().current_scene.name) == "Main":
 			music_loaded = true
 			if len(shared.cur_stage_start_positions[int(shared.level_number)]) > 3:
-				if OS.has_feature("pc"):
+				if OS.has_feature("windows"):
 					if FileAccess.file_exists("res://assets/Audio/tracks/" + str(shared.cur_stage_start_positions[int(shared.level_number)][3])):
 						self.stream = AudioStreamOggVorbis.load_from_file(str(("res://assets/Audio/tracks/" + str(shared.cur_stage_start_positions[int(shared.level_number)][3]))))
 						music_text_show(str(shared.cur_stage_start_positions[int(shared.level_number)][3]))
 					else:
 						shared.error.append(str("could not load audio track at", "res://assets/Audio/tracks/" + str(shared.cur_stage_start_positions[int(shared.level_number)][3])))
 				else:
-					if ResourceLoader.exists(str(("res://assets/Audio/tracks/" + str(shared.cur_stage_start_positions[int(shared.level_number)][3])))):
-						self.stream = load(str(("res://assets/Audio/tracks/" + str(shared.cur_stage_start_positions[int(shared.level_number)][3]))))		
-						music_text_show(str(shared.cur_stage_start_positions[int(shared.level_number)][3]))
+					if OS.has_feature("android"):
+						if ResourceLoader.exists(str(("res://assets/Audio/tracks/" + str(shared.cur_stage_start_positions[int(shared.level_number)][3])))+".remap"):
+							self.stream = load(str(("res://assets/Audio/tracks/" + str(shared.cur_stage_start_positions[int(shared.level_number)][3])))+".remap")
+							music_text_show(str(shared.cur_stage_start_positions[int(shared.level_number)][3])+".remap")
+						else:
+							shared.error.append(str("could not load audio for android"))
 					else:
-						shared.error.append(str("could not load audio track " + str(shared.cur_stage_start_positions[int(shared.level_number)][3])))
+						if ResourceLoader.exists(str(("res://assets/Audio/tracks/" + str(shared.cur_stage_start_positions[int(shared.level_number)][3])))):
+							self.stream = load(str(("res://assets/Audio/tracks/" + str(shared.cur_stage_start_positions[int(shared.level_number)][3]))))		
+							music_text_show(str(shared.cur_stage_start_positions[int(shared.level_number)][3]))
+						else:
+							shared.error.append(str("could not load audio track " + str(shared.cur_stage_start_positions[int(shared.level_number)][3])))
 			else:
 				shared.error.append(str("could not get music from array, check if item 3 exists"))
 				

@@ -6,8 +6,14 @@ const JUMP_VELOCITY = -400.0
 var movex :float = 0
 @onready var onscreen = $VisibleOnScreenNotifier2D
 @onready var sprite = $AnimatedSprite2D
+signal died
+var startpos :Vector2i
+
 
 func _physics_process(delta):
+
+
+
 
 	if onscreen.is_on_screen() == true:
 		# Add the gravity.
@@ -55,4 +61,15 @@ func _on_area_2d_2_area_exited(area):
 
 func _PLAYER(body):
 	if body is Player:
-		get_tree().reload_current_scene()
+		shared.hasreset = true
+		print("set hasreset true")
+		
+		shared.died = true
+		
+func _ready():
+	startpos = position
+		
+		
+func _process(delta):
+	if shared.died == true:
+		position = startpos

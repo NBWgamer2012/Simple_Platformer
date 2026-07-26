@@ -7,7 +7,6 @@
 [sub_resource type="AudioStreamOggVorbis" id="AudioStreamOggVorbis_s3ifu"]
 
 [node name="Audio_SYSTEM" type="Node" unique_id=1350617828]
-process_mode = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1022870423]
 process_thread_group = 1

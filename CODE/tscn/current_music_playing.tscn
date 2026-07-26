@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://msiytnxuwbd7"]
+
+[ext_resource type="Script" uid="uid://dt7a31ybkpyh0" path="res://tscn/current_music_playing.gd" id="1_m1ewi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ppeyn"]
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Current_Music_Playing" type="Label" unique_id=1997538315]
+z_index = 2131
+offset_left = 160.0
+offset_top = 867.0
+offset_right = 275.0
+offset_bottom = 890.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.3137255)
+label_settings = SubResource("LabelSettings_ppeyn")
+script = ExtResource("1_m1ewi")

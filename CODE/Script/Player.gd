@@ -10,8 +10,11 @@ var JUMP_VELOCITY :float = -350.0
 var direction :float = 1
 var xspeed :float = 0
 var map_found :bool = false
+signal died
+
+
 func _ready():
-	
+
 #	for i in len(shared.cur_stage_start_positions):
 #		if shared.cur_stage == shared.cur_stage_start_positions[i][0]:
 #			position = Vector2i(shared.cur_stage_start_positions[i][1], shared.cur_stage_start_positions[i][2])
@@ -26,8 +29,9 @@ func _ready():
 func _physics_process(delta):
 
 	if position.y >= 42:
-		get_tree().reload_current_scene()
-
+		shared.hasreset = true
+		print("set hasreset true")
+		emit_signal("died")
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -76,7 +80,11 @@ func _physics_process(delta):
 		doublejump = 0
 	double_jump_counter.text = str(shared.doublejump_collected)
 	
-
+	if shared.died == true:
+		await get_tree().create_timer(0.01).timeout
+		shared.died = false
+		position = Vector2i(shared.cur_checkpoint.x, shared.cur_checkpoint.y)
+		
 
 
 
@@ -92,3 +100,14 @@ func animation_controller(cur_animation, cur_direction):
 	elif cur_direction < 0:
 		sprite.flip_h = true
 	debug_text.text = str(cur_animation, " / ", cur_direction, " / ", doublejump, " / ", xspeed ," / ", Engine.get_frames_per_second())
+
+
+
+
+
+
+
+
+
+func _on_died():
+	shared.died = true
